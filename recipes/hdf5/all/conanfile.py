@@ -132,7 +132,7 @@ class LibHdf5Conan(ConanFile):
         self.cpp_info.libs.extend(["hdf5_cpp", "hdf5"])
 
         # Fix names for Windows static libs (they expect a leading 'lib')
-        if not self.options.shared and self.settings.os == "Windows":
+        if not self.options.shared and self.settings.compiler == "Visual Studio":
             self.cpp_info.libs = ["lib" + libname for libname in self.cpp_info.libs]
 
         if self.options.shared:
